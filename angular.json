@@ -23,8 +23,11 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles.css", "@bootstrap/scss/bootstrap.scss"],
-            "scripts": ["node_modules/heatmap.js/build/heatmap.js"]
+            "styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/scss/bootstrap.scss"
+            ],
+            "scripts": []
           },
           "configurations": {
             "production": {

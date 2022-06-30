@@ -11,11 +11,11 @@
           class="form-select form-select-lg mb-3"
           aria-label=".form-select-lg example"
           id="selectSilo"
+          (change)="changeSilo($event.target)"
         >
           <option selected disabled>Selecione o silo</option>
           <option value="1">Silo 1</option>
           <option value="2">Silo 2</option>
-          <option value="3">Silo 3</option>
         </select>
       </div>
     </div>

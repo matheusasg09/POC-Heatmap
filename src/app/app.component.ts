@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { pendulosData1, pendulosData2 } from './constants/pendulos-data';
+import { valueHeatmap1, valueHeatmap2 } from './constants/heatmap-value';
 
 declare const h337: any;
 
@@ -9,6 +11,7 @@ declare const h337: any;
 })
 export class AppComponent implements OnInit {
   pendulos: any[] = [];
+  valueHeatmapData: any[] = [];
   gradientCfg = {
     0.2: '#3DAC79',
     0.4: '#3DE95A',
@@ -19,75 +22,25 @@ export class AppComponent implements OnInit {
   heatmap: any = null;
 
   ngOnInit(): void {
+    this.pendulos = pendulosData1;
+    this.valueHeatmapData = valueHeatmap1;
     this.createHeatMap();
-    this.pendulos = [
-      {
-        sensores: [
-          '38,5',
-          '37,3',
-          '29,9',
-          '29,3',
-          '30,3',
-          '29,3',
-          '29,7',
-          '27,1',
-        ],
-      },
-      {
-        sensores: [
-          '38,5',
-          '37,3',
-          '29,9',
-          '29,3',
-          '30,3',
-          '29,3',
-          '29,7',
-          '27,1',
-        ],
-      },
-      {
-        sensores: [
-          '38,5',
-          '37,3',
-          '29,9',
-          '29,3',
-          '30,3',
-          '29,3',
-          '29,7',
-          '27,1',
-        ],
-      },
-      {
-        sensores: [
-          '38,5',
-          '37,3',
-          '29,9',
-          '29,3',
-          '30,3',
-          '29,3',
-          '29,7',
-          '27,1',
-        ],
-      },
-      {
-        sensores: [
-          '38,5',
-          '37,3',
-          '29,9',
-          '29,3',
-          '30,3',
-          '29,3',
-          '29,7',
-          '27,1',
-        ],
-      },
-    ];
   }
 
-  createHeatMap(): void {
+  changeSilo(event: any): void {
+    if (event.value == 1) {
+      this.pendulos = pendulosData1;
+      this.heatmap.setData({ max: 100, min: 0, data: valueHeatmap1 });
+    } else {
+      this.pendulos = pendulosData2;
+      this.heatmap.setData({ max: 100, min: 0, data: valueHeatmap2 });
+    }
+  }
+
+  private createHeatMap(): void {
     const config = {
       container: document.querySelector('.heatmap'),
-      opacity: 1,
+      opacity: 0.9,
       radius: 10,
       visible: true,
       blur: 0.75,
@@ -100,21 +53,7 @@ export class AppComponent implements OnInit {
     const data: any = {
       max: 100,
       min: 0,
-      data: [
-        { x: 170, y: 190, value: 100, radius: 40 },
-        { x: 170, y: 180, value: 100, radius: 30 },
-        { x: 170, y: 170, value: 100, radius: 70 },
-        { x: 170, y: 160, value: 100, radius: 40 },
-        { x: 170, y: 150, value: 100, radius: 50 },
-        { x: 170, y: 140, value: 100, radius: 60 },
-        { x: 170, y: 130, value: 100, radius: 15 },
-        { x: 170, y: 120, value: 100, radius: 15 },
-        { x: 170, y: 110, value: 100, radius: 15 },
-        { x: 170, y: 100, value: 100, radius: 20 },
-        { x: 170, y: 200, value: 100, radius: 10 },
-        { x: 200, y: 250, value: 100, radius: 150 },
-        { x: 150, y: 250, value: 100, radius: 170 },
-      ],
+      data: this.valueHeatmapData,
     };
 
     this.heatmap.setData(data);

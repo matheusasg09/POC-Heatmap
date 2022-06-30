@@ -1,0 +1,31 @@
+export const valueHeatmap1 = [
+  { x: 170, y: 190, value: 100, radius: 40 },
+  { x: 170, y: 180, value: 100, radius: 30 },
+  { x: 170, y: 170, value: 100, radius: 70 },
+  { x: 170, y: 160, value: 100, radius: 40 },
+  { x: 170, y: 150, value: 100, radius: 50 },
+  { x: 170, y: 140, value: 100, radius: 60 },
+  { x: 170, y: 130, value: 100, radius: 15 },
+  { x: 170, y: 120, value: 100, radius: 15 },
+  { x: 170, y: 110, value: 100, radius: 15 },
+  { x: 170, y: 100, value: 100, radius: 20 },
+  { x: 170, y: 200, value: 100, radius: 10 },
+  { x: 200, y: 250, value: 100, radius: 150 },
+  { x: 150, y: 250, value: 100, radius: 170 },
+];
+
+export const valueHeatmap2 = [
+  { x: 170, y: 190, value: 100, radius: 0 },
+  { x: 170, y: 180, value: 100, radius: 0 },
+  { x: 170, y: 170, value: 100, radius: 0 },
+  { x: 170, y: 160, value: 100, radius: 0 },
+  { x: 170, y: 150, value: 100, radius: 0 },
+  { x: 170, y: 140, value: 100, radius: 0 },
+  { x: 170, y: 130, value: 100, radius: 80 },
+  { x: 170, y: 120, value: 100, radius: 10 },
+  { x: 170, y: 110, value: 100, radius: 0 },
+  { x: 170, y: 100, value: 100, radius: 0 },
+  { x: 170, y: 200, value: 100, radius: 0 },
+  { x: 200, y: 250, value: 100, radius: 150 },
+  { x: 150, y: 250, value: 100, radius: 170 },
+];

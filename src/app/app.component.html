@@ -13,9 +13,9 @@
           id="selectSilo"
           (change)="changeSilo($event.target)"
         >
-          <option selected disabled>Selecione o silo</option>
-          <option value="1">Silo 1</option>
-          <option value="2">Silo 2</option>
+          <option selected disabled>Selecione o tipo de silo</option>
+          <option value="1">Fundo plano com chapéu</option>
+          <option value="2">Fundo plano sem chapéu</option>
         </select>
       </div>
     </div>
@@ -25,7 +25,7 @@
         class="background-silo shadow-lg rounded"
         src="../assets/img/background-visao-isometrica-sem-motores.png"
       />
-      <img class="silo" src="../assets/img/silo-vazio_1.svg" />
+      <img class="silo" [src]="siloType" />
       <span class="heatmap"></span>
       <div class="pendulos">
         <span class="pendulo" *ngFor="let pendulo of pendulos; let i = index">

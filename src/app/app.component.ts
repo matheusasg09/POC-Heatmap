@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
     1.0: '#D6505A',
   };
   heatmap: any = null;
+  siloType: string = '../assets/img/silo-vazio.svg';
 
   ngOnInit(): void {
     this.pendulos = pendulosData1;
@@ -31,9 +32,11 @@ export class AppComponent implements OnInit {
     if (event.value == 1) {
       this.pendulos = pendulosData1;
       this.heatmap.setData({ max: 100, min: 0, data: valueHeatmap1 });
+      this.siloType = '../assets/img/silo-vazio.svg';
     } else {
       this.pendulos = pendulosData2;
       this.heatmap.setData({ max: 100, min: 0, data: valueHeatmap2 });
+      this.siloType = '../assets/img/silo-plano-sem-chapeu.svg';
     }
   }
 

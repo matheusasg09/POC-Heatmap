@@ -1,0 +1,65 @@
+.heatmap {
+  min-width: 330px;
+  min-height: 340px;
+  margin-top: 40px;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 640px;
+}
+
+.silo {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+}
+
+.main img,
+.silo,
+.pendulos,
+.yField {
+  position: absolute;
+}
+
+.background-silo {
+  max-width: 680px;
+  width: 100%;
+}
+
+.pendulos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+  width: 330px;
+}
+
+.pendulos .pendulo {
+  border-right: 1px solid black;
+  height: 325px;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.sensor {
+  margin-right: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 40px;
+}
+
+.bg-info {
+  background-color: #4ca0e0 !important;
+}
+
+.bg-light {
+  height: 100vh;
+}
+
+.xField {
+  margin-left: 15px;
+}

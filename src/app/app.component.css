@@ -1,6 +1,6 @@
 .heatmap {
-  min-width: 330px;
-  min-height: 340px;
+  width: 330px;
+  height: 340px;
   margin-top: 40px;
 }
 
@@ -62,4 +62,88 @@
 
 .xField {
   margin-left: 15px;
+}
+
+@media only screen and (max-width: 720px) {
+  .heatmap {
+    min-width: 330px;
+    min-height: 340px;
+    margin-top: 40px;
+    transform: scale(0.75);
+  }
+
+  .silo {
+    max-width: 300px;
+    width: 100%;
+  }
+
+  .background-silo {
+    max-width: 540px;
+    width: 100%;
+  }
+
+  .pendulos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 45px;
+    width: 250px;
+  }
+
+  .pendulos .pendulo {
+    border-right: 1px solid black;
+    height: 235px;
+    font-weight: 500;
+    font-size: 0.8rem;
+  }
+
+  .sensor {
+    margin-right: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 29px;
+  }
+}
+
+@media only screen and (max-width: 720px) {
+  .heatmap {
+    min-width: 330px;
+    min-height: 340px;
+    margin-top: 40px;
+    transform: scale(0.75);
+  }
+
+  .silo {
+    max-width: 300px;
+    width: 100%;
+  }
+
+  .background-silo {
+    max-width: 540px;
+    width: 100%;
+  }
+
+  .pendulos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 45px;
+    width: 250px;
+  }
+
+  .pendulos .pendulo {
+    border-right: 1px solid black;
+    height: 235px;
+    font-weight: 500;
+    font-size: 0.8rem;
+  }
+
+  .sensor {
+    margin-right: 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 29px;
+  }
 }

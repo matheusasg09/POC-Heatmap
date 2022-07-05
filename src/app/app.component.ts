@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { pendulosData1, pendulosData2 } from './constants/pendulos-data';
 import { valueHeatmap1, valueHeatmap2 } from './constants/heatmap-value';
+import { HeatmapPoint } from 'src/models/heatmap.interface';
 
 declare const h337: any;
 
@@ -13,10 +14,15 @@ export class AppComponent implements OnInit {
   pendulos: any[] = [];
   valueHeatmapData: any[] = [];
   gradientCfg = {
-    0.2: '#3DAC79',
-    0.4: '#3DE95A',
+    0.1: '#3D50F3',
+    0.2: '#58BEF3',
+    0.3: '#3DAC79',
+    0.4: '#1ADD83',
+    0.5: '#5AE9B5',
     0.6: '#D6E95A',
-    0.8: '#D6B25A',
+    0.7: '#FBBC05',
+    0.8: '#ED892D',
+    0.9: '#F97951',
     1.0: '#D6505A',
   };
   heatmap: any = null;
@@ -26,6 +32,7 @@ export class AppComponent implements OnInit {
     this.pendulos = pendulosData1;
     this.valueHeatmapData = valueHeatmap1;
     this.createHeatMap();
+    this.formatHeatmapPoint(valueHeatmap1);
   }
 
   changeSilo(event: any): void {
@@ -43,7 +50,7 @@ export class AppComponent implements OnInit {
   private createHeatMap(): void {
     const config = {
       container: document.querySelector('.heatmap'),
-      opacity: 0.9,
+      opacity: 0.8,
       radius: 10,
       visible: true,
       blur: 0.75,
@@ -60,5 +67,24 @@ export class AppComponent implements OnInit {
     };
 
     this.heatmap.setData(data);
+  }
+
+  private convertTemperatureValue(heatmapPoint: HeatmapPoint): number {
+    const temperature = heatmapPoint.value;
+
+    if (temperature < 6) {
+      return 10;
+    }
+    if (temperature >= 6 && temperature <= 10) {
+      return 20;
+    }
+
+    return 0;
+  }
+
+  private formatHeatmapPoint(heatmapPoints: HeatmapPoint[]): void {
+    heatmapPoints.map((point) => {
+      this.convertTemperatureValue(point);
+    });
   }
 }

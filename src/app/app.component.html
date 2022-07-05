@@ -1,4 +1,4 @@
-<div class="bg-light">
+<div class="bg-light vh-100">
   <div class="bg-info">
     <div class="container-fluid">
       <p class="py-3 h4 text-white text-center">COMPONENTE DE SILO</p>
@@ -28,15 +28,30 @@
       <img class="silo" [src]="siloType" />
       <span class="heatmap"></span>
       <div class="pendulos">
-        <span class="pendulo" *ngFor="let pendulo of pendulos; let i = index">
-          <span
-            class="sensor"
-            *ngFor="let sensor of pendulo.sensores; let i = index"
-          >
-            {{ pendulo.sensores[i] }}
+        <ng-container *ngFor="let pendulo of pendulos; let i = index">
+          <span class="pendulo">
+            <ng-container *ngIf="i === 0">
+              <span>
+                <span
+                  class="sensor"
+                  *ngFor="let sensor of pendulo.sensores; let i = index"
+                >
+                  {{ pendulo.sensores[i] }}
+                </span>
+                <span class="xField">0{{ i + 1 }}</span>
+              </span>
+            </ng-container>
+            <ng-container *ngIf="i !== 0">
+              <span
+                class="sensor"
+                *ngFor="let sensor of pendulo.sensores; let i = index"
+              >
+                {{ pendulo.sensores[i] }}
+              </span>
+              <span class="xField">0{{ i + 1 }}</span>
+            </ng-container>
           </span>
-          <span class="xField">0{{ i + 1 }}</span>
-        </span>
+        </ng-container>
       </div>
     </div>
   </div>

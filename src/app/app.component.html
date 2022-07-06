@@ -30,26 +30,14 @@
       <div class="pendulos">
         <ng-container *ngFor="let pendulo of pendulos; let i = index">
           <span class="pendulo">
-            <ng-container *ngIf="i === 0">
-              <span>
-                <span
-                  class="sensor"
-                  *ngFor="let sensor of pendulo.sensores; let i = index"
-                >
-                  {{ pendulo.sensores[i] }}
-                </span>
-                <span class="xField">0{{ i + 1 }}</span>
-              </span>
-            </ng-container>
-            <ng-container *ngIf="i !== 0">
-              <span
-                class="sensor"
-                *ngFor="let sensor of pendulo.sensores; let i = index"
-              >
-                {{ pendulo.sensores[i] }}
-              </span>
-              <span class="xField">0{{ i + 1 }}</span>
-            </ng-container>
+            <span class="linha"></span>
+            <span
+              class="sensor"
+              *ngFor="let sensor of pendulo.sensores; let i = index"
+            >
+              {{ pendulo.sensores[i] }}
+            </span>
+            <span>P{{ i <= 8 ? "0" : "" }}{{ i + 1 }}</span>
           </span>
         </ng-container>
       </div>

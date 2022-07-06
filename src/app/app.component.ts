@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { pendulosData1, pendulosData2 } from './constants/pendulos-data';
-import { valueHeatmap1, valueHeatmap2 } from './constants/heatmap-value';
+import { heatmapPoints, valueHeatmap2 } from './constants/heatmap-value';
 import { HeatmapPoint } from 'src/models/heatmap.interface';
+import { HeatmapService } from 'src/services/heatmap.service';
 
 declare const h337: any;
 
@@ -11,8 +12,10 @@ declare const h337: any;
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit {
+  constructor(private heatmapService: HeatmapService) {}
+
   pendulos: any[] = [];
-  valueHeatmapData: any[] = [];
+  valueHeatmapData: HeatmapPoint[] = [];
   gradientCfg = {
     0.1: '#3D50F3',
     0.2: '#58BEF3',
@@ -30,15 +33,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.pendulos = pendulosData1;
-    this.valueHeatmapData = valueHeatmap1;
+    this.valueHeatmapData = heatmapPoints;
     this.createHeatMap();
-    this.formatHeatmapPoint(valueHeatmap1);
   }
 
   changeSilo(event: any): void {
     if (event.value == 1) {
       this.pendulos = pendulosData1;
-      this.heatmap.setData({ max: 100, min: 0, data: valueHeatmap1 });
+      this.heatmap.setData({ max: 100, min: 0, data: heatmapPoints });
       this.siloType = '../assets/img/silo-vazio.svg';
     } else {
       this.pendulos = pendulosData2;
@@ -47,13 +49,24 @@ export class AppComponent implements OnInit {
     }
   }
 
+  private getHeatmapPoints(): void {
+    this.heatmapService.getHeatmapPoints().subscribe({
+      next: (heatmapPoints) => {
+        this.valueHeatmapData = heatmapPoints;
+      },
+      error: (error) => {
+        console.log(error.message);
+      },
+    });
+  }
+
   private createHeatMap(): void {
     const config = {
       container: document.querySelector('.heatmap'),
-      opacity: 0.8,
+      opacity: 1,
       radius: 10,
       visible: true,
-      blur: 0.75,
+      blur: 0.8,
       gradient: this.gradientCfg,
       backgroundColor: 'inherit',
     };
@@ -67,24 +80,5 @@ export class AppComponent implements OnInit {
     };
 
     this.heatmap.setData(data);
-  }
-
-  private convertTemperatureValue(heatmapPoint: HeatmapPoint): number {
-    const temperature = heatmapPoint.value;
-
-    if (temperature < 6) {
-      return 10;
-    }
-    if (temperature >= 6 && temperature <= 10) {
-      return 20;
-    }
-
-    return 0;
-  }
-
-  private formatHeatmapPoint(heatmapPoints: HeatmapPoint[]): void {
-    heatmapPoints.map((point) => {
-      this.convertTemperatureValue(point);
-    });
   }
 }
